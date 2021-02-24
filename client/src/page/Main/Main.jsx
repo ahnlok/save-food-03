@@ -115,6 +115,11 @@ const Main = () => {
                           </button>
                       </li>
                     ))}
+                    {/* Save Button */}
+                    <button className="waves-effect waves-light btn"
+                    onClick={() => {
+                      // Redirected to new page called 'Save' with populated list on "Use First" section, and create a card in "Save" page with saved items in "Use first"
+                    }}
               </div>
           </div>
       </div>
