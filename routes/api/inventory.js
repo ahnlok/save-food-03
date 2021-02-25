@@ -9,7 +9,7 @@ router
 
 router
     .route("/:id")
-    .get(inventoryController.findById)
+    .get(inventoryController.findByIdWithFoodItem)
     .put(inventoryController.update)
     .delete(inventoryController.remove)
 
