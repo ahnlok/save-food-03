@@ -5,7 +5,7 @@ const inventoryController = require("../../controllers/inventoryController");
 router
     .route("/inventory")
     .get(inventoryController.findAll)
-    .post(inventoryController.create)
+    .post(inventoryController.createFoodItem)
 
 router
     .route("/:id")
