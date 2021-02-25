@@ -1,25 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { response } from "express";
+// import { response } from "express";
 
-const inventories =[
-  {
-    name: "Heinz Ketchup",
-    category: "Fridge",
-    expiration: "02-25-22"
-  },
-  {
-    name: "Pickle",
-    category: "Fridge",
-    expiration: "01-22-22"
-  },
+// const inventories =[
+//   {
+//     name: "Heinz Ketchup",
+//     category: "Fridge",
+//     expiration: "02-25-22"
+//   },
+//   {
+//     name: "Pickle",
+//     category: "Fridge",
+//     expiration: "01-22-22"
+//   },
 
-]
+// ]
 
 const Main = () => {
+  const inventories =[
+    {
+      name: "Heinz Ketchup",
+      category: "Fridge",
+      expiration: "02-25-22"
+    },
+    {
+      name: "Pickle",
+      category: "Fridge",
+      expiration: "01-22-22"
+    },
+  
+  ]
+  
   // Inventory List
-  const [inventories, setInventories] = useState([]);
+  // const [inventories, setInventories] = useState([]);
   // Use First List
   const [firstUses, setFirstUses] = useState([]);
 
@@ -29,19 +43,20 @@ const Main = () => {
 
   const history = useHistory();
 
-  useEffect(() => {
-    axios
-      .get("/api/inventory")
-      .then((response) => {
-        setInventories(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/inventory")
+  //     .then((response) => {
+  //       setInventories(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   // Use Function (It will move item listed in Inventory section to Use First Section upon click the "Use button")
-  const useFirst = (inventory) => {
+  const useFirst = () => {
+    const inventory = inventories;
     setFirstUses((used) => {
       return [...used, inventory]
     })
@@ -64,11 +79,11 @@ const Main = () => {
       <div className= "container">
           <div className="row">
               <div className="col s12">
-                  <Link 
+                  {/* <Link 
                     to="/main/inventory/new"
                     className="waves-effect waves-light btn">
                         Add New Item
-                    </Link>
+                    </Link> */}
               </div>
           </div>
           <div classNAme="row">
@@ -81,14 +96,14 @@ const Main = () => {
 
                           {/* Use Button */}
                           <button className="waves-effect waves-light btn" 
-                          onClick={() => useFirst(inventories)}>
+                          onClick={useFirst}>
                           Use</button>
 
                           {/* Edit Button*/}
-                          <Link 
+                          {/* <Link 
                             to={`/main/inventory/${inventory._id}/edit`}
                             className="waves-effect waves-light btn"
-                          >Edit</Link>
+                          >Edit</Link> */}
 
                           {/* Delete Button */}
                           <button className="waves-effect waves-light btn"
@@ -119,7 +134,7 @@ const Main = () => {
                     <button className="waves-effect waves-light btn"
                     onClick={() => {
                       // Redirected to new page called 'Save' with populated list on "Use First" section, and create a card in "Save" page with saved items in "Use first"
-                    }}
+                    }}></button>
               </div>
           </div>
       </div>
